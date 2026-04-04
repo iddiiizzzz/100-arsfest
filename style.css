@@ -58,10 +58,10 @@ body {
         top: 100%;
         transform: rotateX(20deg) translateZ(0);
     }
-    90% {
+    80% {
         opacity: 1;
     }
-    95% {
+    85% {
         opacity: 0;
     }
     100% {
