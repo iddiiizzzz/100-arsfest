@@ -19,7 +19,7 @@ function runCrawl() {
   crawl.style.animation = 'none';
   crawl.offsetHeight; // force reflow
   setTimeout(() => {
-    crawl.style.animation = 'crawl 120s linear forwards';
+    crawl.style.animation = 'crawl 200s linear forwards';
     crawl.style.animationPlayState = 'running';
   }, 7000); // second delay
 
