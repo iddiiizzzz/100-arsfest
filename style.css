@@ -1,0 +1,152 @@
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+  
+
+body {
+    background: black;
+    color: rgb(255, 234, 0);
+    font-family: 'Times', sans-serif;
+}
+
+.star-wars {
+    position: relative;
+    height: 100vh;
+    perspective: 400px;
+    overflow: hidden;
+}
+
+.crawl {
+    position: absolute;
+    bottom: 0%;
+    top: 100%;
+    width: 100%;
+    transform-origin: 50% 100%;
+    transform: rotateX(20deg);
+    animation: crawl 50s linear;
+    animation-play-state: paused; /* Pause animation initially */
+}
+
+
+
+
+.crawl p {
+    text-align: center;
+    font-size: clamp(50px, 5vw, 80px);
+    line-height: 1.5;
+    width: 40ch;
+    margin: 0 auto 1.2em;
+}
+
+@keyframes crawl {
+    0% {
+        top: 100%;
+        transform: rotateX(20deg) translateZ(0);
+    }
+    100% {
+        top: -830%;
+        transform: rotateX(20deg) translateZ(-1000px);
+    }
+}
+
+
+
+.start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: rgb(255, 234, 0);;
+    color: black;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+.start-button:hover {
+    background-color: rgb(225, 206, 2);
+}
+
+
+.end-screen {
+    position: absolute;
+    inset: 0;
+    display: none;               /* hidden initially */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    color: rgb(255, 234, 0);
+    text-align: center;
+    z-index: 20;
+}
+
+.end-screen h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.replay-button {
+    font-size: 24px;
+    padding: 15px 30px;
+    background: rgb(255, 234, 0);;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.replay-button:hover {
+    background-color: rgb(225, 206, 2);
+}
+
+
+
+
+
+
+
+
+
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; /* adjust size */
+    z-index: 5;
+    display: none;
+}
+
+
+
+@keyframes imageSequence {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.05) rotate(-1080deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
