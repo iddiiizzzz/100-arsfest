@@ -21,6 +21,7 @@ body {
     overflow: hidden;
 }
 
+
 .crawl {
     position: absolute;
     bottom: 0%;
@@ -29,30 +30,93 @@ body {
     transform-origin: 50% 100%;
     transform: rotateX(20deg);
     animation: crawl 50s linear;
-    animation-play-state: paused; /* Pause animation initially */
+    animation-play-state: paused; 
 }
 
 
 
 
-.crawl p {
+/* .crawl p {
     text-align: center;
     font-size: clamp(50px, 5vw, 80px);
     line-height: 1.5;
     width: 40ch;
     margin: 0 auto 1.2em;
+} */
+
+.crawl p {
+    text-align: center;
+    font-size: clamp(20px, 5vw, 80px);
+    line-height: 1.5;
+    width: min(40ch, 90vw);
+    margin: 0 auto 1.2em;
 }
+
 
 @keyframes crawl {
     0% {
         top: 100%;
         transform: rotateX(20deg) translateZ(0);
     }
+    90% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 0;
+    }
     100% {
-        top: -830%;
+        top: -700%;
+        opacity: 0;
         transform: rotateX(20deg) translateZ(-1000px);
     }
 }
+
+
+
+/* .crawl {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 1800px;
+    margin-left: -900px;
+    transform-origin: 50% 100%;
+    transform: rotateX(20deg) scale(var(--crawl-scale, 1));
+    animation: crawl 50s linear;
+    animation-play-state: paused;
+}
+
+
+.crawl p {
+    text-align: center;
+    font-size: 80px;
+    line-height: 1.5;
+    width: 40ch;
+    margin: 0 auto 1.2em;
+}
+
+
+@keyframes crawl {
+    0% {
+        top: 300%;
+        opacity: 1;
+        transform: rotateX(20deg) scale(var(--crawl-scale, 1)) translateZ(0);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        top: -830%;
+        opacity: 0;
+        transform: rotateX(20deg) scale(var(--crawl-scale, 1)) translateZ(-1000px);
+    }
+} */
+
+
+
+
+
 
 
 
@@ -122,7 +186,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px; /* adjust size */
+    width: min(800px, 80vw); /* adjust size */
     z-index: 5;
     display: none;
 }

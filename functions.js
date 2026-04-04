@@ -19,7 +19,7 @@ function runCrawl() {
   crawl.style.animation = 'none';
   crawl.offsetHeight; // force reflow
   setTimeout(() => {
-    crawl.style.animation = 'crawl 120s linear forwards';
+    crawl.style.animation = 'crawl 20s linear forwards';
     crawl.style.animationPlayState = 'running';
   }, 7000); // second delay
 
@@ -73,3 +73,22 @@ function runImageAnimation() {
   centerImage.offsetHeight; // force reflow
   centerImage.style.animation = 'imageSequence 7s ease-in-out forwards';
 }
+
+
+
+
+
+
+
+function updateCrawlScale() {
+  const designWidth = 1080;
+  const screenWidth = window.innerWidth;
+
+  // scale down on smaller screens, keep normal size on larger ones
+  const scale = Math.min(screenWidth / designWidth, 1);
+
+  document.documentElement.style.setProperty('--crawl-scale', scale);
+}
+
+updateCrawlScale();
+window.addEventListener('resize', updateCrawlScale);
