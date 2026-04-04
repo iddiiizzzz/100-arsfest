@@ -85,7 +85,7 @@ body {
     100% {
         top: -150%;
         opacity: 0;
-        transform: rotateX(20deg) translateZ(-1000px);
+        transform: rotateX(20deg) translateZ(-500px);
     }
 }
 
