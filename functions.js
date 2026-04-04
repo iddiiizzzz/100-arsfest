@@ -21,7 +21,7 @@ function runCrawl() {
   setTimeout(() => {
     crawl.style.animation = 'crawl 20s linear forwards';
     crawl.style.animationPlayState = 'running';
-  }, 7000); // second delay
+  }, 100); // second delay
 
   // restart music from the beginning
   crawlMusic.currentTime = 1.5;
