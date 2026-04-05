@@ -1,84 +1,38 @@
-const crawl = document.querySelector('.crawl');
-const endScreen = document.getElementById('endScreen');
-const startButton = document.querySelector('.start-button');
-const crawlMusic = document.getElementById('crawlMusic');
-const centerImage = document.querySelector('.center-image');
-
-// function runCrawl() {
-//   endScreen.style.display = 'none';
-
-//   crawl.style.animation = 'none';
-//   crawl.offsetHeight; // force reflow
-
-//   setTimeout(() => {
-//     crawl.style.animation = 'crawlMove 30s linear forwards';
-//     crawl.style.animationPlayState = 'running';
-//   });
-
-//   crawlMusic.currentTime = 1.5;
-//   crawlMusic.play();
-
-//   crawl.addEventListener('animationend', showEndScreen, { once: true });
-// }
-
-
-const isPhone = window.innerWidth < 700;
-
-function runCrawl() {
-  endScreen.style.display = 'none';
-
-  crawl.style.animation = 'none';
-  crawl.offsetHeight; // force reflow
-
-  setTimeout(() => {
-    crawl.style.animation = isPhone
-  ? 'crawlMoveMobile 90s linear forwards'
-  : 'crawlMove 90s linear forwards';
-    crawl.style.animationPlayState = 'running';
-  }, isPhone ? 6000 : 6000);
-
-  crawlMusic.currentTime = 1.5;
-  crawlMusic.play();
-
-  crawl.addEventListener('animationend', showEndScreen, { once: true });
-}
-
-
 function startCrawl() {
-  startButton.style.display = 'none';
-  runImageAnimation();
-  runCrawl();
-}
+  const music = document.getElementById("crawlMusic");
+  const videos = document.querySelectorAll("video");
+  const startButton = document.querySelector(".start-button");
+  const endScreen = document.getElementById("endScreen");
 
-function replayCrawl() {
-  runImageAnimation();
-  runCrawl();
-}
+  endScreen.style.display = "none";
 
-function showEndScreen() {
-  endScreen.style.display = 'flex';
-}
+  const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
 
-document.addEventListener('click', function (e) {
-  if (e.target.closest('.start-button') || e.target.closest('.replay-button')) return;
+  const computerVideo = videos[0];
+  const mobileVideo = videos[1];
+  const chosenVideo = isMobile ? mobileVideo : computerVideo;
 
-  const isPaused = crawl.style.animationPlayState === 'paused';
-  crawl.style.animationPlayState = isPaused ? 'running' : 'paused';
+  videos.forEach(v => {
+      v.style.display = "none";
+      v.pause();
+      v.currentTime = 0;
+  });
 
-  if (isPaused) {
-    crawlMusic.play();
-  } else {
-    crawlMusic.pause();
-  }
-});
+  chosenVideo.style.display = "block";
+  startButton.style.display = "none";
 
-function runImageAnimation() {
-  centerImage.style.display = 'block';
-  centerImage.style.animation = 'none';
-  centerImage.offsetHeight;
-  centerImage.style.animation = 'imageSequence 7s ease-in-out forwards';
-}
+  music.currentTime = 0;
+  music.play();
 
-function showEndScreen() {
-  endScreen.style.display = 'flex';
+  // ⭐ Play video muted first to avoid the pause/play overlay
+  chosenVideo.muted = true;
+
+  chosenVideo.play().then(() => {
+      // ⭐ Unmute AFTER playback starts
+      chosenVideo.muted = false;
+  });
+
+  chosenVideo.onended = () => {
+      endScreen.style.display = "flex";
+  };
 }

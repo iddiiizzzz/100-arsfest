@@ -19,60 +19,6 @@ body {
     background: black;
 }
 
-/* fixed perspective plane */
-.crawl-wrap {
-    position: absolute;
-    left: 50%;
-    bottom: -10vh;
-    width: 70vw;
-    max-width: 900px;
-    min-width: 320px;
-    height: 140vh;
-    transform: translateX(-50%) perspective(450px) rotateX(25deg);
-    transform-origin: 50% 100%;
-    overflow: hidden;
-    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-}
-
-/* moving text */
-.crawl {
-    position: absolute;
-    left: 50%;
-    bottom: 0vh;
-    width: 100%;
-    transform: translateX(-50%) translateY(100%);
-    animation: none;
-}
-
-.crawl p {
-    margin: 0 0 1.2em 0;
-    text-align: center;
-    font-size: 3.5vw;
-    line-height: 1.35;
-    font-weight: bold;
-}
-
-
-
-
-/* only vertical movement */
-@keyframes crawlMove {
-    from {
-        transform: translateX(-50%) translateY(550vh);
-    }
-    to {
-        transform: translateX(-50%) translateY(-200vh);
-    }
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -128,60 +74,46 @@ body {
 }
 
 
-.center-image {
+
+
+video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(800px, 80vw);
-    z-index: 5;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: none;
-}
-
-@keyframes imageSequence {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.05) rotate(-1080deg);
-    }
-    30% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    }
-    90% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    }
+    z-index: 5;
 }
 
 
-@media (max-width: 700px) {
-    .crawl-wrap {
-        width: 100vw;
-        height: 200vh;
-        bottom: -10vh;
-        transform: translateX(-50%) perspective(380px) rotateX(15deg);
-    }
-
-    .crawl {
-        transform: translateX(-50%) translateY(450vh);
-        animation: none;
-    }
-
-    .crawl p {
-        font-size: 10vw;
-    }
-
-    @keyframes crawlMoveMobile {
-        from {
-            transform: translateX(-50%) translateY(450vh);
-        }
-        to {
-            transform: translateX(-50%) translateY(-200vh);
-        }
-    }
+.mobile-video {
+    pointer-events: none;
 }
+
+video::-webkit-media-controls {
+    display: none !important;
+    opacity: 0 !important;
+}
+video::-webkit-media-controls {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
 
