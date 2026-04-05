@@ -4,6 +4,26 @@ const startButton = document.querySelector('.start-button');
 const crawlMusic = document.getElementById('crawlMusic');
 const centerImage = document.querySelector('.center-image');
 
+// function runCrawl() {
+//   endScreen.style.display = 'none';
+
+//   crawl.style.animation = 'none';
+//   crawl.offsetHeight; // force reflow
+
+//   setTimeout(() => {
+//     crawl.style.animation = 'crawlMove 30s linear forwards';
+//     crawl.style.animationPlayState = 'running';
+//   });
+
+//   crawlMusic.currentTime = 1.5;
+//   crawlMusic.play();
+
+//   crawl.addEventListener('animationend', showEndScreen, { once: true });
+// }
+
+
+const isPhone = window.innerWidth < 700;
+
 function runCrawl() {
   endScreen.style.display = 'none';
 
@@ -11,15 +31,18 @@ function runCrawl() {
   crawl.offsetHeight; // force reflow
 
   setTimeout(() => {
-    crawl.style.animation = 'crawlMove 90s linear forwards';
+    crawl.style.animation = isPhone
+  ? 'crawlMoveMobile 90s linear forwards'
+  : 'crawlMove 90s linear forwards';
     crawl.style.animationPlayState = 'running';
-  }, 7000);
+  }, isPhone ? 1000 : 6000);
 
   crawlMusic.currentTime = 1.5;
   crawlMusic.play();
 
   crawl.addEventListener('animationend', showEndScreen, { once: true });
 }
+
 
 function startCrawl() {
   startButton.style.display = 'none';
@@ -54,4 +77,8 @@ function runImageAnimation() {
   centerImage.style.animation = 'none';
   centerImage.offsetHeight;
   centerImage.style.animation = 'imageSequence 7s ease-in-out forwards';
+}
+
+function showEndScreen() {
+  endScreen.style.display = 'flex';
 }

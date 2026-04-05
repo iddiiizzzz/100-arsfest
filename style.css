@@ -42,7 +42,7 @@ body {
     bottom: 0vh;
     width: 100%;
     transform: translateX(-50%) translateY(100%);
-    animation-play-state: paused;
+    animation: none;
 }
 
 .crawl p {
@@ -122,6 +122,12 @@ body {
     background-color: rgb(225, 206, 2);
 }
 
+.end-gif {
+    width: min(300px, 60vw);
+    margin-bottom: 20px;
+}
+
+
 .center-image {
     position: absolute;
     top: 50%;
@@ -155,12 +161,27 @@ body {
 @media (max-width: 700px) {
     .crawl-wrap {
         width: 100vw;
-        height: 150vh;
-        bottom: -500vh; /* tweak this to get the start height you like */
-        transform: translateX(-50%) perspective(380px) rotateX(22deg);
+        height: 200vh;
+        bottom: -10vh;
+        transform: translateX(-50%) perspective(380px) rotateX(15deg);
+    }
+
+    .crawl {
+        transform: translateX(-50%) translateY(450vh);
+        animation: none;
     }
 
     .crawl p {
-        font-size: 10vw; /* a bit larger on phones but still tied to width */
+        font-size: 10vw;
+    }
+
+    @keyframes crawlMoveMobile {
+        from {
+            transform: translateX(-50%) translateY(505vh);
+        }
+        to {
+            transform: translateX(-50%) translateY(-200vh);
+        }
     }
 }
+
