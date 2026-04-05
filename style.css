@@ -154,13 +154,13 @@ body {
 
 @media (max-width: 700px) {
     .crawl-wrap {
-        width: 88vw;
+        width: 100vw;
         height: 150vh;
         bottom: -500vh; /* tweak this to get the start height you like */
-        transform: translateX(-50%) perspective(380px) rotateX(28deg);
+        transform: translateX(-50%) perspective(380px) rotateX(22deg);
     }
 
     .crawl p {
-        font-size: 5vw; /* a bit larger on phones but still tied to width */
+        font-size: 10vw; /* a bit larger on phones but still tied to width */
     }
 }
