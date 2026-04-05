@@ -35,7 +35,7 @@ function runCrawl() {
   ? 'crawlMoveMobile 90s linear forwards'
   : 'crawlMove 90s linear forwards';
     crawl.style.animationPlayState = 'running';
-  }, isPhone ? 1000 : 6000);
+  }, isPhone ? 6000 : 6000);
 
   crawlMusic.currentTime = 1.5;
   crawlMusic.play();
