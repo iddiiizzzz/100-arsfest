@@ -177,7 +177,7 @@ body {
 
     @keyframes crawlMoveMobile {
         from {
-            transform: translateX(-50%) translateY(450vh);
+            transform: translateX(-50%) translateY(250vh);
         }
         to {
             transform: translateX(-50%) translateY(-200vh);
